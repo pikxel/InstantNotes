@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D324E6022176AFD00A684BD /* NoteEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D324E5F22176AFD00A684BD /* NoteEditorController.swift */; };
+		4D324E692219864900A684BD /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D324E682219864900A684BD /* Notes.swift */; };
 		4DE22278221405140003D0C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22277221405140003D0C4 /* AppDelegate.swift */; };
-		4DE2227A221405140003D0C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22279221405140003D0C4 /* ViewController.swift */; };
+		4DE2227A221405140003D0C4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22279221405140003D0C4 /* HomeViewController.swift */; };
 		4DE2227D221405140003D0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE2227B221405140003D0C4 /* Main.storyboard */; };
 		4DE22282221405160003D0C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE22280221405160003D0C4 /* LaunchScreen.storyboard */; };
 		4DE2228D221405160003D0C4 /* InstantNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2228C221405160003D0C4 /* InstantNotesTests.swift */; };
 		4DE22298221405160003D0C4 /* InstantNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22297221405160003D0C4 /* InstantNotesUITests.swift */; };
 		4DE222AD2214167F0003D0C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE222AC2214167F0003D0C4 /* Assets.xcassets */; };
+		4DE222B32214214E0003D0C4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE222B22214214E0003D0C4 /* APIManager.swift */; };
+		4DE222B9221445E00003D0C4 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE222B8221445E00003D0C4 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D324E5F22176AFD00A684BD /* NoteEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorController.swift; sourceTree = "<group>"; };
+		4D324E682219864900A684BD /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
 		4DE22274221405140003D0C4 /* InstantNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE22277221405140003D0C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4DE22279221405140003D0C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4DE22279221405140003D0C4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4DE2227C221405140003D0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4DE22281221405160003D0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DE22283221405160003D0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		4DE22297221405160003D0C4 /* InstantNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantNotesUITests.swift; sourceTree = "<group>"; };
 		4DE22299221405160003D0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE222AC2214167F0003D0C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4DE222B22214214E0003D0C4 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		4DE222B8221445E00003D0C4 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D324E652219856B00A684BD /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				4DE222B22214214E0003D0C4 /* APIManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		4D324E662219858900A684BD /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				4DE222B8221445E00003D0C4 /* Note.swift */,
+			);
+			path = Object;
+			sourceTree = "<group>";
+		};
+		4D324E67221985CE00A684BD /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				4D324E682219864900A684BD /* Notes.swift */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		4DE2226B221405140003D0C4 = {
 			isa = PBXGroup;
 			children = (
@@ -97,9 +129,13 @@
 		4DE22276221405140003D0C4 /* InstantNotes */ = {
 			isa = PBXGroup;
 			children = (
+				4D324E67221985CE00A684BD /* Class */,
+				4D324E662219858900A684BD /* Object */,
+				4D324E652219856B00A684BD /* Manager */,
 				4DE222AC2214167F0003D0C4 /* Assets.xcassets */,
 				4DE22277221405140003D0C4 /* AppDelegate.swift */,
-				4DE22279221405140003D0C4 /* ViewController.swift */,
+				4DE22279221405140003D0C4 /* HomeViewController.swift */,
+				4D324E5F22176AFD00A684BD /* NoteEditorController.swift */,
 				4DE2227B221405140003D0C4 /* Main.storyboard */,
 				4DE22280221405160003D0C4 /* LaunchScreen.storyboard */,
 				4DE22283221405160003D0C4 /* Info.plist */,
@@ -256,8 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DE2227A221405140003D0C4 /* ViewController.swift in Sources */,
+				4D324E6022176AFD00A684BD /* NoteEditorController.swift in Sources */,
+				4DE2227A221405140003D0C4 /* HomeViewController.swift in Sources */,
+				4DE222B32214214E0003D0C4 /* APIManager.swift in Sources */,
 				4DE22278221405140003D0C4 /* AppDelegate.swift in Sources */,
+				4DE222B9221445E00003D0C4 /* Note.swift in Sources */,
+				4D324E692219864900A684BD /* Notes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
