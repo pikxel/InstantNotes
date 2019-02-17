@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		4D324E6022176AFD00A684BD /* NoteEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D324E5F22176AFD00A684BD /* NoteEditorController.swift */; };
 		4D324E692219864900A684BD /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D324E682219864900A684BD /* Notes.swift */; };
+		4D324E702219B99500A684BD /* NotesClassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D324E6F2219B99500A684BD /* NotesClassTests.swift */; };
+		4D324E722219BB1D00A684BD /* InstantNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D324E712219BB1D00A684BD /* InstantNotesTests.swift */; };
 		4DE22278221405140003D0C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22277221405140003D0C4 /* AppDelegate.swift */; };
 		4DE2227A221405140003D0C4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22279221405140003D0C4 /* HomeViewController.swift */; };
 		4DE2227D221405140003D0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE2227B221405140003D0C4 /* Main.storyboard */; };
 		4DE22282221405160003D0C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DE22280221405160003D0C4 /* LaunchScreen.storyboard */; };
-		4DE2228D221405160003D0C4 /* InstantNotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2228C221405160003D0C4 /* InstantNotesTests.swift */; };
 		4DE22298221405160003D0C4 /* InstantNotesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE22297221405160003D0C4 /* InstantNotesUITests.swift */; };
 		4DE222AD2214167F0003D0C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DE222AC2214167F0003D0C4 /* Assets.xcassets */; };
 		4DE222B32214214E0003D0C4 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE222B22214214E0003D0C4 /* APIManager.swift */; };
@@ -40,6 +41,8 @@
 /* Begin PBXFileReference section */
 		4D324E5F22176AFD00A684BD /* NoteEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorController.swift; sourceTree = "<group>"; };
 		4D324E682219864900A684BD /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		4D324E6F2219B99500A684BD /* NotesClassTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesClassTests.swift; sourceTree = "<group>"; };
+		4D324E712219BB1D00A684BD /* InstantNotesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantNotesTests.swift; sourceTree = "<group>"; };
 		4DE22274221405140003D0C4 /* InstantNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstantNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE22277221405140003D0C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DE22279221405140003D0C4 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -47,7 +50,6 @@
 		4DE22281221405160003D0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4DE22283221405160003D0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE22288221405160003D0C4 /* InstantNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstantNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4DE2228C221405160003D0C4 /* InstantNotesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantNotesTests.swift; sourceTree = "<group>"; };
 		4DE2228E221405160003D0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DE22293221405160003D0C4 /* InstantNotesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InstantNotesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DE22297221405160003D0C4 /* InstantNotesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantNotesUITests.swift; sourceTree = "<group>"; };
@@ -146,8 +148,9 @@
 		4DE2228B221405160003D0C4 /* InstantNotesTests */ = {
 			isa = PBXGroup;
 			children = (
-				4DE2228C221405160003D0C4 /* InstantNotesTests.swift */,
+				4D324E712219BB1D00A684BD /* InstantNotesTests.swift */,
 				4DE2228E221405160003D0C4 /* Info.plist */,
+				4D324E6F2219B99500A684BD /* NotesClassTests.swift */,
 			);
 			path = InstantNotesTests;
 			sourceTree = "<group>";
@@ -305,7 +308,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4DE2228D221405160003D0C4 /* InstantNotesTests.swift in Sources */,
+				4D324E702219B99500A684BD /* NotesClassTests.swift in Sources */,
+				4D324E722219BB1D00A684BD /* InstantNotesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
