@@ -93,6 +93,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="doneButton" destination="9Wm-JS-tBS" id="Lwh-Lu-asS"/>
                         <outlet property="textView" destination="IjB-uo-eM2" id="9O4-Y5-j7J"/>
                     </connections>
                 </viewController>

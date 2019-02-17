@@ -12,7 +12,8 @@ import Foundation
 class NoteEditorController:  UIViewController {
     
     @IBOutlet weak var textView: UITextView!
- 
+    @IBOutlet weak var doneButton: UIBarButtonItem!
+    
     // NoteEditor accepts an optional Note argument, which is passed before the segue (HomeViewController->prepare)
     // New note: Default definition of a Note object is used when no Note object was sent from HomeViewController
     // Edit note: Note was sent from HomeViewController, the sent Note overwrites the default
@@ -34,6 +35,9 @@ class NoteEditorController:  UIViewController {
     }
     
     @IBAction func editingDonePressed(_ sender: Any) {
+        
+        // Disable the Done button to prevent multiply calls of this function
+        self.doneButton.isEnabled = false
         
         // User finishd the editing, get the input from textField and assign it our Note Object
         // For better performance implement the textViewDidChange to catch every change

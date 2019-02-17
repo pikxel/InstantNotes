@@ -45,8 +45,6 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
          self.reloadTableView()
     }
     
-
-    
     private func initalizeTableView(){
         
         // This view controller itself will provide the delegate methods and row data for the table view.
@@ -58,6 +56,11 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
         
         // Register the table view cell class and its reuse id
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "notes")
+        
+        // Add gesture recognizer to detect when the user taps a blank place on TableView
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.tableViewBackgroundTapped))
+        self.tableView.backgroundView = UIView()
+        self.tableView.backgroundView?.addGestureRecognizer(tap)
     }
     
     
@@ -74,6 +77,7 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
         // Show "Draft" if the Note object title is empty
         if(!Notes.sharedInstance.collection[indexPath.row].title.isEmpty){
             cell.textLabel?.text = Notes.sharedInstance.collection[indexPath.row].title
+            cell.textLabel?.textColor = UIColor.black
         }else {
             cell.textLabel?.text = "[Draft]"
             cell.textLabel?.textColor = UIColor.red
@@ -89,34 +93,88 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
         
         // When tableView item is clicked first time, we need change the navigation bar accrodingly
         if(!tableViewItemIsActive){
-            tableViewItemIsActive = true
-            
-            // Note is active, show the delete button to enable deletion
-            showTrashButton()
-            
-            // Note is active, show the edit button to enable edition
-            showEditButton()
+           tableViewHasActiveitem()
         }
     }
     
+    @objc private func tableViewBackgroundTapped(){
+        
+        // Check for tableViewItemActivnes to only execute once
+        if(tableViewItemIsActive){
+            
+            
+            // Find the indexPath of the active row
+            let indexPath = IndexPath(row: selectedNoteIndex, section: 0)
+            
+            // Deselect the active row
+            self.tableView.deselectRow(at: indexPath, animated: false)
+            
+            // As we don't have row selected, clear the navigation
+            tableViewHasNotActiveItem()
+        }
+    }
+    
+    private func tableViewHasActiveitem(){
+        tableViewItemIsActive = true
+        
+        // TableView is active, show the delete button to enable deletion
+        showTrashButton()
+        
+        // TableView is active, show the edit button to enable edition
+        showEditButton()
+    }
+    
+    private func tableViewHasNotActiveItem(){
+        tableViewItemIsActive = false
+        
+        // TableView is not active, show the delete button to enable deletion
+        hideTrashButton()
+        
+        // TableView is not active, show the edit button to enable edition
+        showNewButton()
+        
+        // There is not active not, reset the selectedNoteIndex
+        selectedNoteIndex = -1
+    }
+    
     private func showTrashButton(){
+        
+        // API delete note callback is not on main thread
+        // UI changes should be done on main thread only
+        DispatchQueue.main.async {
             self.trashButton.tintColor = UIColor.red
             self.trashButton.isEnabled = true
+        }
     }
     
     private func hideTrashButton(){
+        
+        // API delete note callback is not on main thread
+        // UI changes should be done on main thread only
+        DispatchQueue.main.async {
             self.trashButton.tintColor = UIColor.clear
             self.trashButton.isEnabled = false
+        }
     }
     
     private func showEditButton(){
+        
+        // API delete note callback is not on main thread
+        // UI changes should be done on main thread only
+        DispatchQueue.main.async {
             let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(self.addOrEditNotePressed(_:)))
             self.navigationItem.rightBarButtonItem = editButton
+        }
     }
     
     private func showNewButton(){
+        
+        // API delete note callback is not on main thread
+        // UI changes should be done on main thread only
+        DispatchQueue.main.async {
             let newButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(self.addOrEditNotePressed(_:)))
             self.navigationItem.rightBarButtonItem = newButton
+        }
     }
     
     @IBAction func addOrEditNotePressed(_ sender: Any) {
@@ -175,7 +233,7 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
             self.reloadTableView();
             
             // Table view reloaded there is no active tableView item, customize the navigation accordingly
-            self.navigationBarWhenTableViewItemIsNotActive()
+            self.tableViewHasNotActiveItem()
         },handlerFailed: {
             
             // The server is unavailable or there is no internet connection
@@ -210,19 +268,10 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
         
             // Table view reloaded there is no active tableview item, customize the navigation accordingly
             // UI changes should be done on main thread only
-            self.navigationBarWhenTableViewItemIsNotActive()
+            self.tableViewHasNotActiveItem()
             
             self.tableView.reloadData()
         }
-    }
-    
-    private func navigationBarWhenTableViewItemIsNotActive(){
-        
-        // There is no active tableView item, hide the trash buttons
-        self.hideTrashButton()
-        
-        // There is no active tableView item , show the new button
-        self.showNewButton()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

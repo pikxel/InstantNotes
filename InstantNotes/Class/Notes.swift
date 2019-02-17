@@ -35,6 +35,9 @@ class Notes {
     // When creating a new note the server should return it's ID for further reference
     // Our server does not, so we just generate one to distinguish the Note localy
     func generateNextNoteId() -> Int{
+        if(Notes.sharedInstance.collection.isEmpty){
+            return 1
+        }
         return ((Notes.sharedInstance.collection.last?.id)!) + 1
     }
 }
