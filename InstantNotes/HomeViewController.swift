@@ -24,6 +24,15 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
         // Initalize the tableView and set the delegates
         self.initalizeTableView()
         
+        
+        // Test internet connection
+        if(!ReachabilityManager.isConnectedToNetwork()){
+            
+            // There is no internet, print the error
+            self.printAlert(alertTitle: "There is no internet", alertMessage: "Turn on your wifi or data")
+            return
+        }
+        
         // Call the API to fetch the data from the server
         APIManager.getNotes(handlerDone:{ data in
             
@@ -34,7 +43,7 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
                self.reloadTableView()
         }, handlerFailed: {
             
-            // Connecting to the server failed, probably the user does not has internet connection
+            // Connecting to the server failed, probably server issue
             self.printAlert(alertTitle: "Something went wrong.", alertMessage: "We can't reach the server right now.")
         })
     }
@@ -71,8 +80,8 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // create a new cell if needed or reuse an old one
-        let cell:UITableViewCell = self.tableView.dequeueReusableCell(withIdentifier: "notes") as UITableViewCell!
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notes", for: indexPath as IndexPath) as UITableViewCell
+
         // Set text for the tableView item
         // Show "Draft" if the Note object title is empty
         if(!Notes.sharedInstance.collection[indexPath.row].title.isEmpty){
@@ -219,6 +228,14 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
    
     private func deleteNote(){
         
+        // Test internet connection
+        if(!ReachabilityManager.isConnectedToNetwork()){
+            
+            // There is no internet, print the error
+            self.printAlert(alertTitle: "There is no internet", alertMessage: "Turn on your wifi or data")
+            return
+        }
+        
         // From our Note array retrieve the Note the user wish to delete
         let selectedNote = Notes.sharedInstance.collection[selectedNoteIndex]
         
@@ -236,7 +253,7 @@ class HomeViewController:  UIViewController, UITableViewDelegate, UITableViewDat
             self.tableViewHasNotActiveItem()
         },handlerFailed: {
             
-            // The server is unavailable or there is no internet connection
+            // Connecting to the server failed, probably server issue
             // We could not delete the note. Print the error
             self.printAlert(alertTitle: "Something went wrong.", alertMessage: "We can't remove your note right now.")
         })
